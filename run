@@ -1,0 +1,7 @@
+#!/bin/bash
+# Compiles and runs your code
+base="$(basename -s .s $1)"
+as "$1" -o ./bin/a.out
+ld -g ./bin/a.out -o "./bin/$base"
+rm ./bin/a.out
+./"bin/$base"

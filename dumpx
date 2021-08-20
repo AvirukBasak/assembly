@@ -1,0 +1,8 @@
+#!/bin/bash
+# This code shows the hexdump of the output. This is usefull for viewing numeric outputs bcz as of now
+#+ all we can manage is print ASCII value
+base="$(basename -s .s $1)"
+as "$1" -o ./bin/a.out
+ld -g ./bin/a.out -o "./bin/$base"
+rm ./bin/a.out
+./"bin/$base" | hexdump -C | less
