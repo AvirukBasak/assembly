@@ -2,7 +2,7 @@
 
 ```rust
 fn main () {
-    int a = 5,
+    let a = 5,
     b = 7;
 }
 ```
@@ -41,8 +41,8 @@ fn sum (a, b) {
 }
 
 fn main () {
-    var a = 5;
-    var b = 7;
+    let a = 5;
+    let b = 7;
     return sum (a, b);
 }
 
