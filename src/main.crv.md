@@ -69,8 +69,8 @@ sum_i64_i64:
 main:
   push %rbp
   movq %rsp, %rbp
-  movq $5 -8 (%rbp)
-  movq $7 -16 (%rbp)
+  movq $5, -8 (%rbp)
+  movq $7, -16 (%rbp)
   push -16 (%rbp)
   push -8 (%rbp)
   call sum_i64_i64
