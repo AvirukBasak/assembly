@@ -15,7 +15,7 @@ fn main () {
 
 _start:
   call main()
-  call exit(rax)
+  call exit(a)
 
 main():
   push %rbp
@@ -26,7 +26,7 @@ main():
   pop %rbp
   ret
 
-exit(rax):
+exit(a):
   movq %rax, %rdi
   movq $60, %rax
   syscall
@@ -56,7 +56,7 @@ fn main () {
 
 _start:
   call main()
-  call exit(rax)
+  call exit(a)
 
 sum(i64,i64):
   push %rbp
@@ -77,7 +77,7 @@ main():
   pop %rbp
   ret
 
-exit(rax):
+exit(a):
   movq %rax, %rdi
   movq $60, %rax
   syscall
