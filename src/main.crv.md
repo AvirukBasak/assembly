@@ -1,6 +1,6 @@
 ## Creeve
 
-```
+```rust
 fn main () {
     int a = 5,
     b = 7;
@@ -9,22 +9,22 @@ fn main () {
 
 ## Assembly
 
-```
+```assembly
 .text
 .global _start
 
 _start:
-  callq main
-  callq exit
+  call main()
+  call exit
 
-main:
-  pushq %rbp
+main():
+  push %rbp
   movq %rsp, %rbp
   movq $5, -8 (%rbp)
   movq $7, -16 (%rbp)
   movq $0, %rax
   pop %rbp
-  retq
+  ret
 
 exit:
   movq %rax, %rdi
@@ -33,51 +33,49 @@ exit:
 
 ```
 
----
-
 ## Creeve
 
-```
-fn add (a, b) {
+```rust
+fn sum (a, b) {
     return a + b;
 }
 
 fn main () {
     var a = 5;
     var b = 7;
-    return add (a, b);
+    return sum (a, b);
 }
 
 ```
 
 ## Assembly
 
-```
+```assembly
 .text
 .global _start
 
 _start:
-  callq main
-  callq exit
+  call main()
+  call exit
 
-add:
-  pushq %rbp
+sum(i64,i64):
+  push %rbp
   movq %rsp, %rbp
   movq 16 (%rbp), %rax
-  addq 24 (%rbp), %rax
+  add 24 (%rbp), %rax
   pop %rbp
-  retq
-  
-main: 
-  pushq %rbp
+  ret
+
+main():
+  push %rbp
   movq %rsp, %rbp
   movq $5 -8 (%rbp)
   movq $7 -16 (%rbp)
-  pushq -16 (%rbp)
-  pushq -8 (%rbp)
-  callq add
+  push -16 (%rbp)
+  push -8 (%rbp)
+  call sum(i64,i64)
   pop %rbp
-  retq
+  ret
 
 exit:
   movq %rax, %rdi
