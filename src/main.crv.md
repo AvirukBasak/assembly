@@ -14,10 +14,10 @@ fn main () {
 .global _start
 
 _start:
-  call main()
-  call exit(a)
+  call main
+  call exit_rax
 
-main():
+main:
   push %rbp
   movq %rsp, %rbp
   movq $5, -8 (%rbp)
@@ -26,7 +26,7 @@ main():
   pop %rbp
   ret
 
-exit(a):
+exit_rax:
   movq %rax, %rdi
   movq $60, %rax
   syscall
@@ -55,10 +55,10 @@ fn main () {
 .global _start
 
 _start:
-  call main()
-  call exit(a)
+  call main
+  call exit_rax
 
-sum(i64,i64):
+sum_i64_i64:
   push %rbp
   movq %rsp, %rbp
   movq 16 (%rbp), %rax
@@ -66,18 +66,18 @@ sum(i64,i64):
   pop %rbp
   ret
 
-main():
+main:
   push %rbp
   movq %rsp, %rbp
   movq $5 -8 (%rbp)
   movq $7 -16 (%rbp)
   push -16 (%rbp)
   push -8 (%rbp)
-  call sum(i64,i64)
+  call sum_i64_i64
   pop %rbp
   ret
 
-exit(a):
+exit_rax:
   movq %rax, %rdi
   movq $60, %rax
   syscall
